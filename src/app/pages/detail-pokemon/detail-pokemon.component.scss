@@ -1,6 +1,7 @@
 main{
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     position: relative;
     background-image: url("https://pokedex-web-mocha.vercel.app/body_bg.5109f2cea7715438.png");
     font-family: Arial, Helvetica, sans-serif;
@@ -19,15 +20,17 @@ main{
     align-items: center;
     text-transform: capitalize;
     position: relative;
-
+    h2{
+        margin-top: 10px;
+    }
     .buttonToBack{
         position: absolute;
         top: 10px;
         left: 10px;
         margin-right: auto;
         .arrow{
-            height: 55px;
-            width: 55px;
+            height: 45px;
+            width: 45px;
             position: relative;
         }
     }
@@ -44,7 +47,7 @@ main{
         margin: 10px;
         margin-top: 10px;
         text-transform: capitalize;
-        }
+    }
     }
     .imgPokemon{
         background-color: rgb(168, 160, 160);
