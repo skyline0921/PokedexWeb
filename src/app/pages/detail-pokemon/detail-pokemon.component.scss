@@ -18,13 +18,21 @@ main{
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
-    .arrow{
-        right: 200px;
-        height: 55px;
-        width: 55px;
-        position: relative;
+    position: relative;
+
+    .buttonToBack{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        margin-right: auto;
+        .arrow{
+            height: 55px;
+            width: 55px;
+            position: relative;
+        }
     }
     .contentPok{
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,9 +42,8 @@ main{
         border-radius: 10px;
     ul{
         margin: 10px;
-        
-            margin-top: 10px;
-            text-transform: capitalize;
+        margin-top: 10px;
+        text-transform: capitalize;
         }
     }
     .imgPokemon{
@@ -50,6 +57,7 @@ main{
         width: 100%;
         .imgPoke{
             height: 150px;
+            margin-top: 0px;
         }
         h1{
             text-transform: capitalize;

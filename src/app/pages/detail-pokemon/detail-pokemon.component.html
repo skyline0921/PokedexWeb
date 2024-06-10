@@ -3,11 +3,11 @@
         <img class="titlePoke" src="https://pokedex-web-mocha.vercel.app/assets/Pokemon-Logo-650x366.png" alt="">
     </div>
     <div class="content">
-        <div>
-            <img class="arrow" routerLink="/generation" src="/assets/left-arrow-direction-navigation-svgrepo-com.svg" alt="">
-        </div>
         <div class="contentPok">
             <div class="imgPokemon">
+                <div class="buttonToBack">
+                    <img class="arrow" routerLink="/generation" src="/assets/left-arrow-direction-navigation-svgrepo-com.svg" alt="">
+                </div>
                 <img class="imgPoke" src="https://pokemon-react-635a4.web.app/images/animated/{{pokemon.id}}.gif" alt="">
                 <h1>{{pokemon.name}}</h1>
             </div>
