@@ -1,0 +1,59 @@
+section.allPokemons {
+    gap: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .pokemon{
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: rgb(107, 106, 106);
+        min-width: 290px;
+        flex: 1;
+        text-transform: capitalize;
+        padding: 10px;
+        border-radius: 5px;
+        color: rgb(46, 194, 162);
+        overflow: hidden;
+
+        .pok{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            max-width: 115px;
+            object-fit: contain;
+            width: 100%;
+            z-index: 5;
+
+        }
+        h3{
+            position: relative;
+            margin-bottom: auto;
+            margin-top: 15px;
+            z-index: 5;
+        }
+        
+        .imgContent{
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            z-index: 1;
+            .backImg{
+                height: 85px;
+                margin-left: 280px;
+                object-fit: contain;
+                transform: scale(1.4) rotate(-25deg);
+                filter: blur(1px);
+                opacity: .1;
+            }
+        }
+    }  
+}

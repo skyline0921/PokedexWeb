@@ -1,0 +1,38 @@
+<main>
+    <div class="imgTitle">
+        <img class="titlePoke" src="https://pokedex-web-mocha.vercel.app/assets/Pokemon-Logo-650x366.png" alt="">
+    </div>
+    <div class="content">
+        <div>
+            <img class="arrow" routerLink="/generation" src="/assets/left-arrow-direction-navigation-svgrepo-com.svg" alt="">
+        </div>
+        <div class="contentPok">
+            <div class="imgPokemon">
+                <img class="imgPoke" src="https://pokemon-react-635a4.web.app/images/animated/{{pokemon.id}}.gif" alt="">
+                <h1>{{pokemon.name}}</h1>
+            </div>
+        
+            <div class="pokDescription" >
+                <div class="pokemon-info">
+                    <h2>Classificação e Tipos</h2>
+                    <ul>
+                        <li><strong>Nome:</strong> {{pokemonName}}</li>
+                        <li><strong>Número na Pokédex Nacional:</strong> {{this.pokemon.order}}</li>
+                        <li><strong>Tipos:</strong><span> {{type}}</span></li>
+                        <li><strong>Espécie:</strong> {{this.pokemon.species.name}}</li>
+                        <li><strong>Altura:</strong> {{this.pokemon.height}}</li>
+                        <li><strong>Peso:</strong> {{this.pokemon.weight}}</li>
+                    </ul>
+                </div>
+            
+                <div class="pokemon-info">
+                    <h2>Habilidades e Poderes</h2>
+                    <ul>
+                        <li><strong><span> {{powersAndSkills}}</span></strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer-componet></app-footer-componet>
+</main>
