@@ -32,6 +32,4 @@ export class DetailPokemonComponent implements OnInit {
     })
     })
   }
-
-  
 }

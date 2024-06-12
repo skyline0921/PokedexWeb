@@ -34,7 +34,6 @@ export class PokCardComponent implements OnInit {
   }
 
   pokemonType(pokemon: any) {
-    console.log(pokemon.types[0].type.name)
     return pokemon.types[0].type.name 
     }
   }
