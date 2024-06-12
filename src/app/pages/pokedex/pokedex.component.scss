@@ -6,12 +6,32 @@ main{
     position: relative;
     background-image: url("https://pokedex-web-mocha.vercel.app/body_bg.5109f2cea7715438.png");
     font-family: Arial, Helvetica, sans-serif;
-
     .titlePoke{
+        transition: all .2s;
         position: relative;
         display: flex;
         justify-content: flex-start;
         margin-left: 50px;
         height: 100px;
+    }
+    section{
+        gap: 10px;
+        margin-left: 50px;
+        margin-right: 50px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        app-pok-card{
+            min-width: 290px;
+            max-width: 315px;
+            flex: 1;
+        }
+    
+    }
+    .titlePoke:hover{
+        transform: scale(1.1) rotate(-5deg);
     }
 }

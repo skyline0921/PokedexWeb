@@ -1,5 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface IPokemon {
+  name: string
+}
 
 @Component({
   selector: 'app-pok-card',
@@ -8,17 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokCardComponent implements OnInit {
   constructor(private http: HttpClient) {}
-
-  pokemons: any
+ @Input() pokemon!: any;
+ @Input() index: number = 0;
 
   ngOnInit(): void {
-    const url = 'https://pokeapi.co/api/v2/pokemon/?limit=151'
+    const url = `https://pokeapi.co/api/v2/pokemon/${this.pokemon.name}`
     this.http.get(url).subscribe({
     next: ((value: any) => {
-      this.pokemons = value;
+      this.pokemon = value;
     })
     })
   }
+
+  colors: string = 'typeColors'
 
   convertStringToNumber(value:number) {
     if(value < 10){
@@ -26,4 +32,9 @@ export class PokCardComponent implements OnInit {
     }
     return value
   }
-}
+
+  pokemonType(pokemon: any) {
+    console.log(pokemon.types[0].type.name)
+    return pokemon.types[0].type.name 
+    }
+  }
