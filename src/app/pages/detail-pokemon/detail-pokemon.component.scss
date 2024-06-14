@@ -40,9 +40,15 @@ main{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 40%, rgba(253, 0, 0, 0.8) 80%);
+        background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c4e26f17-7dcd-43f1-bf80-ebd03eff0061/d4elxyc-f6e02f47-701d-41b6-b7b6-79e4cd1799ca.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9jNGUyNmYxNy03ZGNkLTQzZjEtYmY4MC1lYmQwM2VmZjAwNjEvZDRlbHh5Yy1mNmUwMmY0Ny03MDFkLTQxYjYtYjdiNi03OWU0Y2QxNzk5Y2EucG5nIn1dXX0.b_qhPoWqWeZ3qwW1PiFmIZJGcakot4QXwRBajHAXheo");
         width: 20rem;
         border-radius: 10px;
+        .pokDescription{
+            padding: 20px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
     ul{
         margin: 10px;
         margin-top: 10px;
