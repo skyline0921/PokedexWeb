@@ -32,4 +32,9 @@ export class DetailPokemonComponent implements OnInit {
     })
     })
   }
+
+  pokemonType(pokemon: any): string {
+    // Método para obter o nome do primeiro tipo do Pokémon.
+    return pokemon.types[0].type.name; // Retorna o nome do primeiro tipo do Pokémon.
+  }
 }
