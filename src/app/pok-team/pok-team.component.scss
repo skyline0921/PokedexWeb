@@ -61,13 +61,16 @@ main{
     .buttons{
         display: flex;
             button{
-                background: linear-gradient(180deg, red 0%, white 100%);
-                padding: 10px;
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzlSa6OC-V2E8HZ9iWl5SRKAjZuDZwDCV_g&s");
+                background-position: center;
+                color: red;
+                padding: 12px;
                 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                 border: none;
                 border-radius: 10px;
                 font-size: 0.8rem;
                 margin-right: 10px;
+                width: 100px;
             }
     }
 }
