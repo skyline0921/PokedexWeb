@@ -46,6 +46,30 @@ main{
             }
         }
     }    
+    .poks{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: auto;
+        width: 100%;
+        top: 70px;
+        max-width: 800px;
+    }
+    .buttons{
+        display: flex;
+            button{
+                background: linear-gradient(180deg, red 0%, white 100%);
+                padding: 10px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border: none;
+                border-radius: 10px;
+                font-size: 0.8rem;
+                margin-right: 10px;
+            }
+    }
 }
 
 @keyframes is-rotating {

@@ -2,13 +2,23 @@
 
 <main>
     <h3>Monte seu time de forma aleatória</h3>
-    <section>
+    <section *ngIf="teamPokemons.length == 0">
         <figure (click)="drawPokemon()" id="figure">
             <h1> ? </h1>
             <img class="bg" src="/assets/pokemon_bg.png" alt="">
             <img class="circle" src="/assets/pokemon_circle_bg.png" alt="">
             <img class="interrogation" src="" alt="">
         </figure>
+    </section>
+
+    <section class="poks" *ngIf="teamPokemons.length > 0">
+        <app-pok-card *ngFor="let pokemon of teamPokemons" [index]="pokemon.index" [pokemon]="pokemon.detail"></app-pok-card>
+
+        <div class="buttons">
+            <button type="button" (click)="clearAndDrawNewPokemon()">Regenerar</button>
+            <button type="button" (click)="savePoks()">Salvar</button>
+            <button type="button" (click)="deletePoks()" routerLink="/">Excluir</button>
+        </div>
     </section>
 </main>
 
