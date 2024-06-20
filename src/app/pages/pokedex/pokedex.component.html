@@ -1,5 +1,4 @@
 <main>
-    <img class="titlePoke" src="https://pokedex-web-mocha.vercel.app/assets/Pokemon-Logo-650x366.png" alt="">
     <section>
       <app-pok-card *ngFor="let pokemon of pokemons?.results; let i = index" [index]="i" [pokemon]="pokemon"></app-pok-card>
     </section>

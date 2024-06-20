@@ -16,13 +16,17 @@ export class PokCardComponent implements OnInit {
   @Input() pokemon!: any; // Recebe um objeto Pokémon do componente pai.
   @Input() index: number = 0; // Recebe um índice do componente pai, com valor padrão 0.
 
+  loading = false;
+
   ngOnInit(): void {
+    this.loading = true;
     // Método chamado quando o componente é inicializado.
     const url = `https://pokeapi.co/api/v2/pokemon/${this.pokemon.name}`; // Cria a URL para buscar dados detalhados do Pokémon usando o nome do Pokémon.
     this.http.get(url).subscribe({
       // Usa HttpClient para fazer uma requisição GET para a URL.
       next: (value: any) => {
         // No retorno bem-sucedido (next), atualiza this.pokemon com os dados recebidos da API.
+        this.loading = false;
         this.pokemon = value;
       }
     });

@@ -1,0 +1,13 @@
+<nav>
+   <div class="content">
+        <figure routerLink="/">
+            <img class="logo" src="https://pokedex-web-mocha.vercel.app/assets/Pokemon-Logo-650x366.png" alt="">
+        </figure>
+
+        <button mat-button routerLink="/team" *ngIf="['/generation'].includes(url)" class="primary">Monte sua pokedéx</button>
+   </div>
+</nav>
+
+<div class="screen">
+    <router-outlet></router-outlet>
+</div>
