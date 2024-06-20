@@ -13,7 +13,13 @@ export class PokTeamComponent implements OnInit {
   sixPokes: number[] = [];
   teamPokemons: any[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    const savedPokemons = localStorage.getItem('pokemonsSaved');
+    if (savedPokemons) {
+      this.teamPokemons = JSON.parse(savedPokemons);
+      this.sixPokes = this.teamPokemons.map(pokemon => pokemon.index + 1);
+    }
+  }
 
   /*
       gerar os 6 pokemons de forma aleatoria; feito 
@@ -72,6 +78,7 @@ export class PokTeamComponent implements OnInit {
   deletePoks() {
     this.sixPokes = [];
     this.teamPokemons = [];
+    localStorage.removeItem('pokemonsSaved');
   }
 
 }
