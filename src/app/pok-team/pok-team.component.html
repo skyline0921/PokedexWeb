@@ -1,7 +1,5 @@
-<app-nav-bar></app-nav-bar>
-
 <main>
-    <h3>Monte seu time de forma aleatória</h3>
+    <h3>Build your team randomly</h3>
     <section *ngIf="teamPokemons.length == 0">
         <figure (click)="drawPokemon()" id="figure">
             <h1> ? </h1>
@@ -15,9 +13,9 @@
         <app-pok-card *ngFor="let pokemon of teamPokemons" [index]="pokemon.index" [pokemon]="pokemon.detail"></app-pok-card>
 
         <div class="buttons">
-            <button type="button" (click)="clearAndDrawNewPokemon()">Regenerar</button>
-            <button type="button" (click)="savePoks()">Salvar</button>
-            <button type="button" (click)="deletePoks()" routerLink="/">Excluir</button>
+            <button type="button" (click)="clearAndDrawNewPokemon()">Regenerate</button>
+            <button type="button" (click)="savePoks()">To save</button>
+            <button type="button" (click)="deletePoks()" routerLink="/">Delete</button>
         </div>
     </section>
 </main>

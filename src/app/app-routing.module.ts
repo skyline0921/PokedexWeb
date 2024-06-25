@@ -4,6 +4,7 @@ import { DetailPokemonComponent } from './pages/detail-pokemon/detail-pokemon.co
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PokTeamComponent } from './pok-team/pok-team.component';
+import { YourTeamComponent } from './pages/your-team/your-team.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'team',
         component: PokTeamComponent
+      },
+      {
+        path: 'yourTeam',
+        component: YourTeamComponent
       },
       { path: '**', redirectTo: 'generation' }
     ]

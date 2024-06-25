@@ -5,24 +5,19 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 50;
-
     .content {
         width: 90%;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-
         figure {
             width: 150px;
             cursor: pointer;
-
             img {
                 width: 100%;
                 object-fit: contain;
                 transition: all .2s;
-
                 &:hover {
                     transform: scale(1.1) rotate(-5deg);
                 }
@@ -58,7 +53,6 @@ nav {
                     left: -20px;
                 }
             }
-        }
+        } 
     }
-
 }

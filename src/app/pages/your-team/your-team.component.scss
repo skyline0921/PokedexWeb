@@ -1,0 +1,29 @@
+ main{
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1de2aeae-bec2-44e5-bb27-e7ae934a605e/dagkx25-fc271842-4c2a-44ee-9e79-beae31302eeb.jpg/v1/fill/w_1024,h_576,q_75,strp/pokeballs_minimalist_wallpaper_by_dragoleni_dagkx25-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMWRlMmFlYWUtYmVjMi00NGU1LWJiMjctZTdhZTkzNGE2MDVlXC9kYWdreDI1LWZjMjcxODQyLTRjMmEtNDRlZS05ZTc5LWJlYWUzMTMwMmVlYi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.P2bzyijY56eSKJpcRb-WBRwVbwQP1Dfi8Tq05FQTbek");
+    min-height: 100vh;
+    height: 100%;
+    .searchPokemon{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        #inputSearch{
+            position: relative;
+            border: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            z-index: 99;
+            min-width: 200px;
+            max-width: 300px;
+            padding: 8px;
+            border-radius: 10px;
+            right: 150px;
+            top: 30px;
+        }
+        .magnifyingGlass{
+            position: relative;
+            height: 25px;
+            right: 190px;
+            top: 32px;
+            z-index: 99;
+        }
+    }
+}

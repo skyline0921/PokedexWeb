@@ -79,6 +79,7 @@ export class PokTeamComponent implements OnInit {
     this.sixPokes = [];
     this.teamPokemons = [];
     localStorage.removeItem('pokemonsSaved');
+    
   }
 
 }

@@ -1,7 +1,29 @@
 <main>
-    <section>
-      <app-pok-card *ngFor="let pokemon of pokemons?.results; let i = index" [index]="i" [pokemon]="pokemon"></app-pok-card>
-    </section>
+  <form (ngSubmit)="searchSubmitHandler()" [formGroup]="filter_form">
+    <div class="searchPokemon">
+      <input
+        type="text"
+        name="search"
+        id="inputSearch"
+        placeholder="Search your pokémon"
+        formControlName="search"
+      />
+      <button class="btn_send" mat-button type="submit" title="icon search">
+        <img
+          class="magnifyingGlass"
+          src="/assets/loupe-search-svgrepo-com.svg"
+          alt=""
+        />
+      </button>
+    </div>
+  </form>
+  <section>
+    <app-pok-card
+      *ngFor="let pokemon of pokemons"
+      [index]="pokemon.id-1"
+      [pokemon]="pokemon"
+    ></app-pok-card>
+  </section>
 </main>
 
 <app-footer-componet></app-footer-componet>

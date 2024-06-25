@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PokTeamComponent } from './pok-team/pok-team.component';
+import { YourTeamComponent } from './pages/your-team/your-team.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotifierModule } from 'angular-notifier';
+import { notifierOptions } from './constants/utils';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +26,17 @@ import { PokTeamComponent } from './pok-team/pok-team.component';
     PokedexComponent,
     NavBarComponent,
     PokTeamComponent,
+    YourTeamComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule, 
     RouterModule.forRoot([]), BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NotifierModule.withConfig(notifierOptions),
   ],
   providers: [],
   bootstrap: [AppComponent]

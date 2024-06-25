@@ -8,22 +8,25 @@
         
             <div class="pokDescription" >
                 <div class="pokemon-info">
-                    <h2>Classificação e Tipos</h2>
+                    <h2>Classification and Types</h2>
                     <ul>
-                        <li><strong>Nome:</strong> {{pokemonName}}</li>
-                        <li><strong>N°dex Nacional:</strong> {{this.pokemon.order}}</li>
-                        <li><strong>Tipos:</strong><span> {{type}}</span></li>
-                        <li><strong>Espécie:</strong> {{this.pokemon.species.name}}</li>
-                        <li><strong>Altura:</strong> {{this.pokemon.height}}</li>
-                        <li><strong>Peso:</strong> {{this.pokemon.weight}}</li>
+                        <li><strong>Name:</strong> {{pokemonName}}</li>
+                        <li><strong>N°dex National:</strong> {{this.pokemon.order}}</li>
+                        <li><strong>Types:</strong><span> {{type}}</span></li>
+                        <li><strong>Species:</strong> {{this.pokemon.species.name}}</li>
+                        <li><strong>Height:</strong> {{this.pokemon.height}}</li>
+                        <li><strong>Weight:</strong> {{this.pokemon.weight}}</li>
                     </ul>
                 </div>
             
                 <div class="pokemon-info">
-                    <h2>Habilidades e Poderes</h2>
+                    <h2>Abilities and Powers</h2>
                     <ul>
                         <li><strong><span> {{powersAndSkills}}</span></strong></li>
                     </ul>
+                    <div class="btn">
+                        <button class="addBtn" (click)="addYourTeammate()" type="button">Add in your team</button>
+                    </div>
                 </div>
             </div>
         </div>

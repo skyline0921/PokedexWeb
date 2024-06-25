@@ -40,6 +40,7 @@ main{
             backdrop-filter: blur(5px);
             border-radius: 5px;
             color: #ffff;
+            margin-bottom: 20px;
         }
     ul{
         margin: 10px;
@@ -125,6 +126,17 @@ main{
         }
         h1{
             text-transform: capitalize;
+        }
+    }
+    .btn{
+        width: 100%;
+        .addBtn{
+            display: flex;
+            justify-content: flex-end;
+            border: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 5px;
+            border-radius: 10px;
         }
     }
 }
