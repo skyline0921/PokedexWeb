@@ -22,7 +22,6 @@ nav {
                     transform: scale(1.1) rotate(-5deg);
                 }
             }
-
         }
 
         button.primary {
@@ -34,7 +33,7 @@ nav {
             font-size: 25px;
             transition: all .2s;
             overflow: hidden;
-
+            left: 100px;
             &::before {
                 position: absolute;
                 left: -150%;

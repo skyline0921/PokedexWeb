@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PokTeamComponent } from './pages/pok-team/pok-team.component';
-import { YourTeamComponent } from './pages/search-logic/your-team.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
 import { notifierOptions } from './constants/utils';
@@ -24,8 +23,7 @@ import { notifierOptions } from './constants/utils';
     DetailPokemonComponent,
     PokedexComponent,
     NavBarComponent,
-    PokTeamComponent,
-    YourTeamComponent
+    PokTeamComponent
   ],
   imports: [
     BrowserModule,
@@ -40,4 +38,4 @@ import { notifierOptions } from './constants/utils';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

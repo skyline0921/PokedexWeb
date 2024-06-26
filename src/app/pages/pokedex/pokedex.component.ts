@@ -38,7 +38,7 @@ export class PokedexComponent {
     const search = this.filter_form.get('search')?.value;
     console.log(search);
 
-    if( search =='') {
+    if( search == '') {
       this.pokemons = this.pokemonsBackup
     }
     else{

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
-
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-pok-team',
@@ -9,7 +9,10 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./pok-team.component.scss'],
 })
 export class PokTeamComponent implements OnInit {
-  constructor(private http: HttpClient, private notifierService: NotifierService) {}
+  constructor(
+    private http: HttpClient,
+    private notifierService: NotifierService
+  ) {}
 
   pokemon: any;
   sixPokes: number[] = [];
@@ -19,17 +22,9 @@ export class PokTeamComponent implements OnInit {
     const savedPokemons = localStorage.getItem('pokemonsSaved');
     if (savedPokemons) {
       this.teamPokemons = JSON.parse(savedPokemons);
-      this.sixPokes = this.teamPokemons.map(pokemon => pokemon.index + 1);
+      this.sixPokes = this.teamPokemons.map((pokemon) => pokemon.index + 1);
     }
   }
-
-      /*
-      gerar os 6 pokemons de forma aleatoria; 
-      armazenar em um array;
-      permitir o click só uma vez;
-      formar o card onde apareça os 6 pokemons na tela pok-team;
-      opção de salvar, regerar ou excluir.
-      */
 
   drawPokemon() {
     for (let index = 0; index < 6; index++) {
@@ -59,8 +54,8 @@ export class PokTeamComponent implements OnInit {
     this.http.get(url).subscribe({
       next: (value: any) => {
         console.log(value);
-        
-        this.teamPokemons.push({index: id-1, detail: value});
+
+        this.teamPokemons.push({ index: id - 1, detail: value });
       },
     });
   }
@@ -72,14 +67,33 @@ export class PokTeamComponent implements OnInit {
   }
 
   savePoks() {
-    localStorage.setItem('pokemonsSaved',JSON.stringify(this.teamPokemons))
-    this.notifierService.notify("success","Team pokemon saved")
+    localStorage.setItem('pokemonsSaved', JSON.stringify(this.teamPokemons));
+    this.notifierService.notify('success', 'Team pokemon saved');
+    this.captureScreen();
   }
 
   deletePoks() {
     this.sixPokes = [];
     this.teamPokemons = [];
     localStorage.removeItem('pokemonsSaved');
-    
+  }
+
+  captureScreen() {
+    const element = document.getElementById('team-container');
+    if (element) {
+      html2canvas(element)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = imgData;
+          link.download = 'team-screenshot.png';
+          link.click();
+        })
+        .catch((err) => {
+          console.error('Failed to capture screenshot:', err);
+        });
+    } else {
+      console.error('Element not found for screenshot');
+    }
   }
 }
