@@ -52,9 +52,11 @@ export class DetailPokemonComponent implements OnInit {
     if (savedPokemons) {
       this.teamPokemons = JSON.parse(savedPokemons);
     }
-    if (this.teamPokemons.filter((el) => el.detail.name == this.pokemon.name).length > 0) {
+    if(this.teamPokemons.filter((el) => el.detail.name == this.pokemon.name).length > 0) {
       this.notifierService.notify('error','This pokemon has already been added')
-    } else {
+    } 
+    else {
+      this.notifierService.notify('success','This pokemon added')
       if (this.teamPokemons.length == 6) {
         this.notifierService.notify('error','Full pokedex')
         return;
