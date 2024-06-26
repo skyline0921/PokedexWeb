@@ -12,7 +12,8 @@ main{
         position: relative;
         display: flex;
         justify-content: center;
-        bottom: 80px;
+        bottom: 70px;
+        right: 250px;
         #inputSearch{
             position: relative;
             border: none;
@@ -30,6 +31,14 @@ main{
             .magnifyingGlass{
                 height: 25px;
             }
+        }
+    }
+    .gif{
+        .gifPokeball{
+            position: relative;
+            left: 450px;
+            bottom: 110px;
+            z-index: 99;
         }
     }
     section{

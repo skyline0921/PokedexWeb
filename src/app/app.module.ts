@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokCardComponent } from './components/pok-card/pok-card.component';
@@ -12,8 +11,8 @@ import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { PokTeamComponent } from './pok-team/pok-team.component';
-import { YourTeamComponent } from './pages/your-team/your-team.component';
+import { PokTeamComponent } from './pages/pok-team/pok-team.component';
+import { YourTeamComponent } from './pages/search-logic/your-team.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
 import { notifierOptions } from './constants/utils';
@@ -26,7 +25,7 @@ import { notifierOptions } from './constants/utils';
     PokedexComponent,
     NavBarComponent,
     PokTeamComponent,
-    YourTeamComponent,
+    YourTeamComponent
   ],
   imports: [
     BrowserModule,

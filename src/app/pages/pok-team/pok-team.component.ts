@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
+
 
 @Component({
   selector: 'app-pok-team',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pok-team.component.scss'],
 })
 export class PokTeamComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private notifierService: NotifierService) {}
 
   pokemon: any;
   sixPokes: number[] = [];
@@ -21,10 +23,10 @@ export class PokTeamComponent implements OnInit {
     }
   }
 
-  /*
-      gerar os 6 pokemons de forma aleatoria; feito 
-      armazenar em um array; feito
-      permitir o click só uma vez; feito
+      /*
+      gerar os 6 pokemons de forma aleatoria; 
+      armazenar em um array;
+      permitir o click só uma vez;
       formar o card onde apareça os 6 pokemons na tela pok-team;
       opção de salvar, regerar ou excluir.
       */
@@ -53,8 +55,6 @@ export class PokTeamComponent implements OnInit {
   }
 
   getDetailPokemon(id: number) {
-    console.log(id);
-    
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     this.http.get(url).subscribe({
       next: (value: any) => {
@@ -73,6 +73,7 @@ export class PokTeamComponent implements OnInit {
 
   savePoks() {
     localStorage.setItem('pokemonsSaved',JSON.stringify(this.teamPokemons))
+    this.notifierService.notify("success","Team pokemon saved")
   }
 
   deletePoks() {
@@ -81,5 +82,4 @@ export class PokTeamComponent implements OnInit {
     localStorage.removeItem('pokemonsSaved');
     
   }
-
 }

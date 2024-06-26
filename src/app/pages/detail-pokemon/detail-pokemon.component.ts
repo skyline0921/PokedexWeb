@@ -18,6 +18,8 @@ export class DetailPokemonComponent implements OnInit {
   pokemonName = '';
   type = [];
   powersAndSkills = [];
+  pokes: number[] = [];
+  teamPokemons: any[] = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
@@ -44,9 +46,26 @@ export class DetailPokemonComponent implements OnInit {
     return pokemon.types[0].type.name; // Retorna o nome do primeiro tipo do Pokémon.
   }
 
-  addYourTeammate() {
-    console.log('ghguguguguy');
+  savePok() {
+    const savedPokemons = localStorage.getItem('pokemonsSaved');
+    
+    if (savedPokemons) {
+      this.teamPokemons = JSON.parse(savedPokemons);
+    }
+    if (this.teamPokemons.filter((el) => el.detail.name == this.pokemon.name).length > 0) {
+      this.notifierService.notify('error','This pokemon has already been added')
+    } else {
+      if (this.teamPokemons.length == 6) {
+        this.notifierService.notify('error','Full pokedex')
+        return;
+      }
 
-    this.notifierService.notify('success', 'pokemon added to pokedex');
+      this.teamPokemons.push({
+        index: this.pokemon.id - 1,
+        detail: this.pokemon,
+      });
+    }
+
+    localStorage.setItem('pokemonsSaved', JSON.stringify(this.teamPokemons))
   }
 }

@@ -25,7 +25,6 @@ export class YourTeamComponent implements OnInit{
 
   searchSubmitHandler(){
     console.log(this.filter_form.get('search')?.value);
-    
   }
 
 }
