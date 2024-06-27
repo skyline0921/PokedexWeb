@@ -14,35 +14,37 @@ export class PokTeamComponent implements OnInit {
     private notifierService: NotifierService
   ) {}
 
-  pokemon: any;
-  sixPokes: number[] = [];
+  idsPokemons: number[] = [];
   teamPokemons: any[] = [];
+  isActive: boolean = false;
+  normalCard: boolean = false;
 
   ngOnInit() {
     const savedPokemons = localStorage.getItem('pokemonsSaved');
     if (savedPokemons) {
       this.teamPokemons = JSON.parse(savedPokemons);
-      this.sixPokes = this.teamPokemons.map((pokemon) => pokemon.index + 1);
+      this.idsPokemons = this.teamPokemons.map((pokemon) => pokemon.index + 1);
     }
   }
 
   drawPokemon() {
-    for (let index = 0; index < 6; index++) {
+    const count = 6 - this.teamPokemons.length; 
+    for (let index = 0; index < count; index++) {
       const numberOfPoke = Math.floor(Math.random() * (151 - 1 + 1)) + 1;
 
-      if (this.sixPokes.filter((el) => el == numberOfPoke).length > 0) {
+      if ((this.idsPokemons.filter((el) => el == numberOfPoke).length > 0)) {
         index--;
       } else {
-        if (this.sixPokes.length == 6) {
+        if (this.idsPokemons.length == 6) {
           return;
         }
 
-        this.sixPokes.push(numberOfPoke);
+        this.idsPokemons.push(numberOfPoke);
       }
     }
-    console.log(this.sixPokes);
+    console.log(this.idsPokemons);
 
-    this.sixPokes.forEach((id) => {
+    this.idsPokemons.forEach((id) => {
       this.getDetailPokemon(id);
     });
 
@@ -55,15 +57,16 @@ export class PokTeamComponent implements OnInit {
       next: (value: any) => {
         console.log(value);
 
+        if (this.teamPokemons.filter((el) => el.index == id - 1).length > 0) return;
+        
         this.teamPokemons.push({ index: id - 1, detail: value });
       },
     });
   }
 
   clearAndDrawNewPokemon() {
-    this.sixPokes = [];
-    this.teamPokemons = [];
     this.drawPokemon();
+    this.isActive = false;
   }
 
   savePoks() {
@@ -73,7 +76,7 @@ export class PokTeamComponent implements OnInit {
   }
 
   deletePoks() {
-    this.sixPokes = [];
+    this.idsPokemons = [];
     this.teamPokemons = [];
     localStorage.removeItem('pokemonsSaved');
   }
@@ -81,19 +84,31 @@ export class PokTeamComponent implements OnInit {
   captureScreen() {
     const element = document.getElementById('team-container');
     if (element) {
-      html2canvas(element)
-        .then((canvas) => {
-          const imgData = canvas.toDataURL('image/png');
-          const link = document.createElement('a');
-          link.href = imgData;
-          link.download = 'team-screenshot.png';
-          link.click();
-        })
-        .catch((err) => {
-          console.error('Failed to capture screenshot:', err);
-        });
+      setTimeout(() => {
+        html2canvas(element)
+          .then((canvas) => {
+            const imgData = canvas.toDataURL('image/jpg');
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'team-screenshot.jpg';
+            link.click();
+          })
+          .catch((error) => {
+            this.notifierService.notify('error', 'Failed to capture screenshot');
+          });
+      }, 1000);
     } else {
-      console.error('Element not found for screenshot');
+      this.notifierService.notify('error', 'Element not found for screenshot');
     }
+  }
+
+  editTeam() {
+    this.isActive = true;
+    this.normalCard = true;
+  }
+
+  removePokemon(index: number) {
+    this.teamPokemons.splice(index, 1);
+    this.idsPokemons.splice(index, 1);
   }
 }

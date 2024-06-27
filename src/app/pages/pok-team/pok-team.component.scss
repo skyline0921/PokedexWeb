@@ -47,16 +47,55 @@ main{
         }
     }    
     .poks{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: auto;
-        width: 100%;
-        top: 70px;
         max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: auto;
+        top: 70px;
+
+        .grayCard{
+            width: 50%;
+            flex: 1;
+            min-width: 300px;
+            background-color: gray;
+            border-radius: 10px;
+            overflow: hidden;
+
+            .backImg{
+                height: 85px;
+                margin-left: 280px;
+                object-fit: contain;
+                transform: scale(1.4) rotate(-25deg);
+                filter: blur(1px);
+                opacity: 0.5;
+            }
+        }
+        
+        .card-poke{
+            width: 50%;
+            flex: 1;
+            min-width: 300px;
+            .edit{
+                display: flex;
+                justify-content: flex-end;
+                margin: 10px;
+                .contentOfEdit{
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                    z-index: 1;
+                    margin-top: 15px;
+                    .bin{
+                        height: 30px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
     }
     .buttons{
         display: flex;

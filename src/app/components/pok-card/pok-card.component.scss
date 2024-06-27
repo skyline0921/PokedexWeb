@@ -1,11 +1,16 @@
+::ng-deep{
+    app-pok-card{
+        display: block;
+        width: 100%;
+    }
+}
+
 .pokemon{
         position: relative;
+        width: 100%;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        min-width: 295px;
-        max-width: 315px;
-        flex: 1;
         text-transform: capitalize;
         padding: 10px;
         border-radius: 5px;
