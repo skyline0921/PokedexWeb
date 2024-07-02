@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { POKEMONS } from './constants/pokemons';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +6,5 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-
- pokemons: any
-
-  ngOnInit() {
-
-  }
+export class AppComponent {
 }

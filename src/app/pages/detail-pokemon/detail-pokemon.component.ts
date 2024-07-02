@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, Routes } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { IAbility, IPokemon, IType } from 'src/app/models/pokemon';
 @Component({
   selector: 'app-detail-pokemon',
   templateUrl: './detail-pokemon.component.html',
@@ -14,45 +15,45 @@ export class DetailPokemonComponent implements OnInit {
     private notifierService: NotifierService
   ) {}
 
-  pokemon: any;
+  pokemon: IPokemon | undefined;
   pokemonName = '';
-  type = [];
-  powersAndSkills = [];
+  type: string = '';
+  powersAndSkills = '';
   pokes: number[] = [];
-  teamPokemons: any[] = [];
+  teamPokemons: {id:number, detail:IPokemon | undefined}[] = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.pokemonName = value['name'];
-      this.pokemon = value;
+      // this.pokemon = value;
     });
 
     const url = `https://pokeapi.co/api/v2/pokemon/${this.pokemonName}`;
-    this.http.get(url).subscribe({
-      next: (value: any) => {
+    this.http.get<IPokemon>(url).subscribe({
+      next: (value) => {
         this.pokemon = value;
 
-        this.type = value.types.map((value: any) => value.type.name).join(', ');
+        this.type = value.types.map((value: IType) => value.type.name).join(', ');
 
         this.powersAndSkills = value.abilities
-          .map((value: any) => value.ability.name)
+          .map((value: IAbility) => value.ability.name)
           .join(', ');
       },
     });
   }
 
-  pokemonType(pokemon: any): string {
+  pokemonType(pokemon: IPokemon | undefined) {
     // Método para obter o nome do primeiro tipo do Pokémon.
-    return pokemon.types[0].type.name; // Retorna o nome do primeiro tipo do Pokémon.
+    return pokemon?.types[0].type.name || '' // Retorna o nome do primeiro tipo do Pokémon.
   }
 
-  savePok() {
+  addPok() {
     const savedPokemons = localStorage.getItem('pokemonsSaved');
     
     if (savedPokemons) {
       this.teamPokemons = JSON.parse(savedPokemons);
     }
-    if(this.teamPokemons.filter((el) => el.detail.name == this.pokemon.name).length > 0) {
+    if(this.teamPokemons.filter((el) => el.detail?.name == this.pokemon?.name).length > 0) {
       this.notifierService.notify('error','This pokemon has already been added')
     } 
     else {
@@ -63,7 +64,7 @@ export class DetailPokemonComponent implements OnInit {
       }
 
       this.teamPokemons.push({
-        index: this.pokemon.id - 1,
+        id: (this.pokemon?.id || 0) - 1,
         detail: this.pokemon,
       });
     }

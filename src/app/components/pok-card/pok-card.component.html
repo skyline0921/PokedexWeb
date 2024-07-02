@@ -1,36 +1,22 @@
-<!-- Envolvendo div que define um link de navegação para uma rota específica -->
-<!-- routerLink define a rota usando o nome do Pokémon -->
-<!-- ngClass aplica uma classe CSS baseada no tipo do Pokémon -->
 <div *ngIf="!loading" routerLink="/pokemon/{{pokemon.name}}" [ngClass]="pokemonType(pokemon)" class="pokemon">
   
-  <!-- index + 1 ajusta o índice para corresponder ao número do Pokémon -->
-  <img class="pok" src="https://pokemon-react-635a4.web.app/images/animated/{{index + 1}}.gif" alt="">
+  <img class="pok" src="https://pokemon-react-635a4.web.app/images/animated/{{index +1}}.gif" alt="">
  
-  <!-- Coluna contendo o nome do Pokémon e seus tipos -->
   <div class="col">
-    <!-- Nome do Pokémon e número (index + 1) -->
-    <!-- $any é usado para assegurar que a interpolação funcione corretamente -->
-    <!-- convertStringToNumber é chamado para formatar o índice -->
-    <h3>{{$any(pokemon.name)}} #{{convertStringToNumber(index+1)}}</h3>
-    
-    <!-- Loop para exibir todos os tipos do Pokémon -->
-    <!-- *ngFor repete o elemento para cada tipo no array de tipos do Pokémon -->
-    <!-- ngClass aplica a classe CSS correspondente ao nome do tipo -->
+  <h3>{{$any(pokemon.name)}} #{{convertStringToNumber(index+1)}}</h3>
+
     <div class="types" *ngFor="let type of pokemon.types" [ngClass]="type.type.name">
       {{type.type.name}}
     </div>
   </div>
 
-  <!-- Div para conter uma imagem de fundo -->
   <div class="imgContent">
-    <!-- Imagem de fundo, neste caso, uma Pokébola -->
     <img class="backImg" src="https://cdn.icon-icons.com/icons2/2248/PNG/512/pokeball_icon_136305.png" alt="">
   </div>
 </div>
 
   <div class="loading" *ngIf="loading">
     <div class="imgContent">
-      <!-- Imagem de fundo, neste caso, uma Pokébola -->
       <img class="backImg" src="https://cdn.icon-icons.com/icons2/2248/PNG/512/pokeball_icon_136305.png" alt="">
     </div>
   </div>

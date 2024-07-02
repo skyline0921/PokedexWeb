@@ -9,7 +9,7 @@
     </figure>
   </section>
 
-  <section class="poks" *ngIf="teamPokemons.length == 0">
+  <section class="poks" *ngIf="teamPokemons.length < 0">
     <div class="grayCard" *ngFor="let empty of [].constructor(6)">
       <img
         class="backImg"
@@ -26,13 +26,13 @@
           <img class="bin" src="/assets/bin.svg" alt="" (click)="removePokemon(i)" />
         </div>
       </div>
-      <app-pok-card
-        [index]="pokemon.index"
+      <app-pok-card *ngIf="pokemon.detail"
+        [index]="pokemon.id"
         [pokemon]="pokemon.detail">
       </app-pok-card>
     </div>
 
-    <div class="grayCard"
+    <div class="grayCard" 
       *ngFor="let empty of [].constructor(6 - teamPokemons.length)">
       <img
         class="backImg"
@@ -42,9 +42,7 @@
     </div>
 
     <div class="buttons">
-      <button type="button" (click)="clearAndDrawNewPokemon()">
-        Regenerate
-      </button>
+      <button type="button" (click)="regenerationPoks()">Regenerate</button>
       <button type="button" (click)="savePoks()">To save</button>
       <button type="button" (click)="deletePoks()">Delete</button>
       <button type="button" (click)="editTeam()">Edit Team</button>

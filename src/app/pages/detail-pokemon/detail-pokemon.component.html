@@ -2,8 +2,8 @@
     <div class="content">
         <div class="contentPok">
         <div class="imgPokemon" [ngClass]="pokemonType(pokemon)">
-                <img class="imgPoke" src="https://pokemon-react-635a4.web.app/images/animated/{{pokemon.id}}.gif" alt="">
-                <h1>{{pokemon.name}}</h1>
+                <img class="imgPoke" src="https://pokemon-react-635a4.web.app/images/animated/{{pokemon}}.gif" alt="">
+                <h1>{{pokemon?.name}}</h1>
             </div>
         
             <div class="pokDescription" >
@@ -11,11 +11,10 @@
                     <h2>Classification and Types</h2>
                     <ul>
                         <li><strong>Name:</strong> {{pokemonName}}</li>
-                        <li><strong>N°dex National:</strong> {{this.pokemon.order}}</li>
+                        <li><strong>N°dex National:</strong> {{this.pokemon?.id}}</li>
                         <li><strong>Types:</strong><span> {{type}}</span></li>
-                        <li><strong>Species:</strong> {{this.pokemon.species.name}}</li>
-                        <li><strong>Height:</strong> {{this.pokemon.height}}</li>
-                        <li><strong>Weight:</strong> {{this.pokemon.weight}}</li>
+                        <li><strong>Height:</strong> {{this.pokemon?.height}}</li>
+                        <li><strong>Weight:</strong> {{this.pokemon?.weight}}</li>
                     </ul>
                 </div>
             
@@ -25,7 +24,7 @@
                         <li><strong><span> {{powersAndSkills}}</span></strong></li>
                     </ul>
                     <div class="btn">
-                        <button class="addBtn" (click)="savePok()" type="button">Add in your team</button>
+                        <button class="addBtn" (click)="addPok()" type="button">Add in your team</button>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import html2canvas from 'html2canvas';
+import { IPokemon } from 'src/app/models/pokemon';
 
 @Component({
   selector: 'app-pok-team',
@@ -15,7 +16,7 @@ export class PokTeamComponent implements OnInit {
   ) {}
 
   idsPokemons: number[] = [];
-  teamPokemons: any[] = [];
+  teamPokemons: {id:number, detail:IPokemon | undefined}[] = [];
   isActive: boolean = false;
   normalCard: boolean = false;
 
@@ -23,12 +24,13 @@ export class PokTeamComponent implements OnInit {
     const savedPokemons = localStorage.getItem('pokemonsSaved');
     if (savedPokemons) {
       this.teamPokemons = JSON.parse(savedPokemons);
-      this.idsPokemons = this.teamPokemons.map((pokemon) => pokemon.index + 1);
+      this.idsPokemons = this.teamPokemons.map((pokemon) => pokemon.id + 1);
     }
   }
 
   drawPokemon() {
-    const count = 6 - this.teamPokemons.length; 
+    const count = 6 - this.teamPokemons.length;
+
     for (let index = 0; index < count; index++) {
       const numberOfPoke = Math.floor(Math.random() * (151 - 1 + 1)) + 1;
 
@@ -53,18 +55,20 @@ export class PokTeamComponent implements OnInit {
 
   getDetailPokemon(id: number) {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    this.http.get(url).subscribe({
-      next: (value: any) => {
+    this.http.get<IPokemon>(url).subscribe({
+      next: (value) => {
         console.log(value);
 
-        if (this.teamPokemons.filter((el) => el.index == id - 1).length > 0) return;
+        if (this.teamPokemons.filter((el) => el.id == id - 1).length > 0) return;
         
-        this.teamPokemons.push({ index: id - 1, detail: value });
+        this.teamPokemons.push({ id: id - 1, detail: value });
       },
     });
   }
 
-  clearAndDrawNewPokemon() {
+  regenerationPoks() {
+    this.idsPokemons = [];
+    this.teamPokemons = [];
     this.drawPokemon();
     this.isActive = false;
   }
@@ -79,6 +83,16 @@ export class PokTeamComponent implements OnInit {
     this.idsPokemons = [];
     this.teamPokemons = [];
     localStorage.removeItem('pokemonsSaved');
+  }
+
+  editTeam() {
+    this.isActive = true;
+    this.normalCard = true;
+  }
+
+  removePokemon(index: number) {
+    this.teamPokemons.splice(index, 1);
+    this.idsPokemons.splice(index, 1);
   }
 
   captureScreen() {
@@ -100,15 +114,5 @@ export class PokTeamComponent implements OnInit {
     } else {
       this.notifierService.notify('error', 'Element not found for screenshot');
     }
-  }
-
-  editTeam() {
-    this.isActive = true;
-    this.normalCard = true;
-  }
-
-  removePokemon(index: number) {
-    this.teamPokemons.splice(index, 1);
-    this.idsPokemons.splice(index, 1);
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailPokemonComponent } from './pages/detail-pokemon/detail-pokemon.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PokTeamComponent } from './pages/pok-team/pok-team.component';
 
 const routes: Routes = [
