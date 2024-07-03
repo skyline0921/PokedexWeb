@@ -9,10 +9,13 @@
         formControlName="search"
       />
       <button class="btn_send" mat-button type="submit" title="icon search">
+        <img class="magnifyingGlass" src="/assets/loupe-search-svgrepo-com.svg" alt=""/>
         <img
-          class="magnifyingGlass"
-          src="/assets/loupe-search-svgrepo-com.svg"
+          *ngIf="showClearIcon"
+          class="binForClear"
+          src="/assets/bin.svg"
           alt=""
+          (click)="clearSearch()"
         />
       </button>
     </div>

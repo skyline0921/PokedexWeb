@@ -19,6 +19,7 @@ export class PokTeamComponent implements OnInit {
   teamPokemons: {id:number, detail:IPokemon | undefined}[] = [];
   isActive: boolean = false;
   normalCard: boolean = false;
+  pokemon: IPokemon | undefined;
 
   ngOnInit() {
     const savedPokemons = localStorage.getItem('pokemonsSaved');
@@ -98,7 +99,6 @@ export class PokTeamComponent implements OnInit {
   captureScreen() {
     const element = document.getElementById('team-container');
     if (element) {
-      setTimeout(() => {
         html2canvas(element)
           .then((canvas) => {
             const imgData = canvas.toDataURL('image/jpg');
@@ -110,7 +110,6 @@ export class PokTeamComponent implements OnInit {
           .catch((error) => {
             this.notifierService.notify('error', 'Failed to capture screenshot');
           });
-      }, 1000);
     } else {
       this.notifierService.notify('error', 'Element not found for screenshot');
     }
