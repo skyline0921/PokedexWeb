@@ -87,7 +87,16 @@
                 background-image: url("https://i.pinimg.com/564x/28/1d/c2/281dc2526efcf8f2bedee02e0dc5f8e7.jpg");
                 background-position: center;
             }
+            .gifPokeball{
+                .pokeball{
+                  height: 40px;
+                  position: relative;
+                  left: 15px;
+                  bottom: 25px;
+                  z-index: 99;
+                }
         }
+    }
         .col{
             width: calc(100% - 150px);
             gap: 5px;

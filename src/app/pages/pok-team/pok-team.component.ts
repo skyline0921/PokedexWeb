@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import html2canvas from 'html2canvas';
 import { IPokemon } from 'src/app/models/pokemon';
+import domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-pok-team',
@@ -16,7 +17,7 @@ export class PokTeamComponent implements OnInit {
   ) {}
 
   idsPokemons: number[] = [];
-  teamPokemons: {id:number, detail:IPokemon | undefined}[] = [];
+  teamPokemons: { id: number, detail: IPokemon | undefined }[] = [];
   isActive: boolean = false;
   normalCard: boolean = false;
   pokemon: IPokemon | undefined;
@@ -35,7 +36,7 @@ export class PokTeamComponent implements OnInit {
     for (let index = 0; index < count; index++) {
       const numberOfPoke = Math.floor(Math.random() * (151 - 1 + 1)) + 1;
 
-      if ((this.idsPokemons.filter((el) => el == numberOfPoke).length > 0)) {
+      if (this.idsPokemons.filter((el) => el == numberOfPoke).length > 0) {
         index--;
       } else {
         if (this.idsPokemons.length == 6) {
@@ -61,7 +62,7 @@ export class PokTeamComponent implements OnInit {
         console.log(value);
 
         if (this.teamPokemons.filter((el) => el.id == id - 1).length > 0) return;
-        
+
         this.teamPokemons.push({ id: id - 1, detail: value });
       },
     });
@@ -98,20 +99,18 @@ export class PokTeamComponent implements OnInit {
 
   captureScreen() {
     const element = document.getElementById('team-container');
+  
     if (element) {
-        html2canvas(element)
-          .then((canvas) => {
-            const imgData = canvas.toDataURL('image/jpg');
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = 'team-screenshot.jpg';
-            link.click();
-          })
-          .catch((error) => {
-            this.notifierService.notify('error', 'Failed to capture screenshot');
-          });
-    } else {
-      this.notifierService.notify('error', 'Element not found for screenshot');
+      const height = element.scrollHeight;
+      const width = element.scrollWidth;
+  
+      html2canvas(element, { useCORS: true, logging: true, width: width, height: height, allowTaint: true, backgroundColor: null}).then(canvas => {
+        const base64image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = base64image;
+        link.download = 'team-pokemon.png';
+        link.click();
+      });
     }
   }
 }

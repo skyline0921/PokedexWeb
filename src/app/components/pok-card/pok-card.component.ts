@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { IPokemon } from 'src/app/models/pokemon';
 @Component({
   selector: 'app-pok-card',
@@ -7,10 +8,11 @@ import { IPokemon } from 'src/app/models/pokemon';
   styleUrls: ['./pok-card.component.scss']
 })
 export class PokCardComponent implements OnInit {
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient, private notifierService: NotifierService) {} 
 
   @Input() pokemon: IPokemon = {} as IPokemon;
   @Input() index: number = 0;
+  teamPokemons: {id:number, detail:IPokemon | undefined}[] = [];
 
   loading = false;
 
@@ -28,5 +30,30 @@ export class PokCardComponent implements OnInit {
 
   pokemonType(pokemon: IPokemon): string {
     return pokemon.types[0].type.name;
+  }
+
+  addPok() {
+    const savedPokemons = localStorage.getItem('pokemonsSaved');
+    
+    if (savedPokemons) {
+      this.teamPokemons = JSON.parse(savedPokemons);
+    }
+    if(this.teamPokemons.filter((el) => el.detail?.name == this.pokemon?.name).length > 0) {
+      this.notifierService.notify('error','This pokemon has already been added')
+    } 
+    else {
+      this.notifierService.notify('success','This pokemon added')
+      if (this.teamPokemons.length == 6) {
+        this.notifierService.notify('error','Full pokedex')
+        return;
+      }
+
+      this.teamPokemons.push({
+        id: (this.pokemon?.id || 0) - 1,
+        detail: this.pokemon,
+      });
+    }
+
+    localStorage.setItem('pokemonsSaved', JSON.stringify(this.teamPokemons))
   }
 }
