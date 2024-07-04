@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="gifPokeball" (click)="addPok()">
+  <div class="gifPokeball" *ngIf="isPokeboll" (click)="addPok($event)">
     <img class="pokeball" src="/assets/pokebola.gif" alt="">
   </div>
 

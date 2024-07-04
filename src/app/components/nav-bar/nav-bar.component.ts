@@ -6,10 +6,9 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
+
 export class NavBarComponent {
-  constructor(
-    private router: Router
-  ){
+  constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd || event instanceof NavigationStart) {
         this.url = router.url;
@@ -17,5 +16,6 @@ export class NavBarComponent {
       }
     });
   }
+
   url = ''
 }
