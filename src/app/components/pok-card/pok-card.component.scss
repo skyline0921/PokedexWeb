@@ -21,6 +21,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        height: 100px;
             &.grass{
                 background-image: url("https://wallpapers.com/images/hd/grass-pictures-1q2hbfjy0eiiycnv.jpg");
                 background-position: bottom;
@@ -88,12 +89,16 @@
                 background-position: center;
             }
             .gifPokeball{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                position: relative;
+                color: white;
+                bottom: 90px;
                 .pokeball{
-                  height: 40px;
-                  position: relative;
-                  left: 15px;
-                  bottom: 25px;
-                  z-index: 99;
+                height: 35px;
+                z-index: 99;
                 }
         }
     }

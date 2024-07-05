@@ -25,7 +25,6 @@ export class DetailPokemonComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.pokemonName = value['name'];
-      // this.pokemon = value;
     });
 
     const url = `https://pokeapi.co/api/v2/pokemon/${this.pokemonName}`;
