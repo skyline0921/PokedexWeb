@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import html2canvas from 'html2canvas';
 import { IPokemon } from 'src/app/models/pokemon';
-import domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-pok-team',
@@ -79,6 +78,7 @@ export class PokTeamComponent implements OnInit {
     localStorage.setItem('pokemonsSaved', JSON.stringify(this.teamPokemons));
     this.notifierService.notify('success', 'Team pokemon saved');
     this.captureScreen();
+    this.saveInClipboard();
   }
 
   deletePoks() {
@@ -92,6 +92,16 @@ export class PokTeamComponent implements OnInit {
     this.normalCard = true;
   }
 
+  saveInClipboard(){
+    const pokemonDetails = this.teamPokemons.map(p => p.detail ? `${p.detail.name} ID: [${p.detail.id}]` : '').join('\n');
+    navigator.clipboard.writeText(pokemonDetails).then(() => {
+      this.notifierService.notify('success', 'Pokemon team copied to clipboard');
+    }).catch(err => {
+      this.notifierService.notify('error', 'Failed to copy Pokemon team');
+      console.error('Could not copy text: ', err);
+    });
+  }
+
   removePokemon(index: number) {
     this.teamPokemons.splice(index, 1);
     this.idsPokemons.splice(index, 1);
@@ -101,16 +111,18 @@ export class PokTeamComponent implements OnInit {
     const element = document.getElementById('team-container');
   
     if (element) {
-      const height = element.scrollHeight;
-      const width = element.scrollWidth;
-  
-      html2canvas(element, { useCORS: true, logging: true, width: width, height: height, allowTaint: true, backgroundColor: null}).then(canvas => {
-        const base64image = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.href = base64image;
-        link.download = 'team-pokemon.png';
-        link.click();
-      });
+      setTimeout(() => {
+        const height = element.scrollHeight;
+        const width = element.scrollWidth;
+    
+        html2canvas(element, { useCORS: true, logging: true, width: width, height: height, allowTaint: true, backgroundColor: null }).then(canvas => {
+          const base64image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = base64image;
+          link.download = 'team-pokemon.png';
+          link.click();
+        });
+      }, 1000);
     }
   }
 }
