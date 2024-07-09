@@ -40,11 +40,10 @@ nav {
                 width: 120%;
                 height: 100%;
                 transform: skew(-40deg);
-                background: linear-gradient(90deg, white 0%, red 100%);
+                background: linear-gradient(90deg, #b4b3b3 30%, red 100%);
                 transition: all .4s;
                 z-index: 1;
             }
-
             &:hover {
                 &::before {
                     left: -20px;
