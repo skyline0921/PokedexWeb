@@ -26,6 +26,7 @@
       </div>
       <app-pok-card *ngIf="pokemon.detail"
         [index]="pokemon.id"
+        [isGifty]="false"
         [pokemon]="pokemon.detail">
       </app-pok-card>
     </div>
@@ -40,10 +41,10 @@
     </div>
 
     <div class="buttons">
-      <button type="button" (click)="regenerationPoks()">Regenerate</button>
-      <button type="button" (click)="savePoks()">To Save</button>
-      <button type="button" (click)="deletePoks()">Delete</button>
-      <button type="button" (click)="editTeam()">Edit Team</button>
+      <button type="button" class="regenerate" (click)="regenerationPoks()">Regenerate <img class="icon" src="/assets/refresh.svg" alt=""></button>
+      <button type="button" class="saves" (click)="savePoks()">To Save <img class="icon" src="/assets/save.svg" alt=""></button>
+      <button type="button" class="delete" (click)="deletePoks()">Delete <img class="icon" src="/assets/delete.svg" alt=""></button>
+      <button type="button" class="edit" (click)="editTeam()">Edit Team <img class="icon" src="/assets/edit.svg" alt=""></button>
     </div>
   </section>
 </main>

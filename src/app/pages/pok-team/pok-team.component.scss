@@ -99,16 +99,78 @@ main{
     }
     .buttons{
         display: flex;
-            button{
-                background-position: center;
-                padding: 10px;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                border: none;
-                border-radius: 10px;
-                font-size: 0.8rem;
-                margin-right: 10px;
-                width: 100px;
+        .regenerate{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            width: 110px;
+            background-color: rgb(66, 196, 66);
+            .icon{
+                height: 20px;
+                margin-left: 5px;
             }
+        }
+        .saves{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            width: 110px;
+            background-color: aqua;
+            .icon{
+                height: 20px;
+                margin-left: 5px;
+            }
+        }
+        .delete{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            width: 110px;
+            background-color: rgb(247, 50, 50);
+            .icon{
+                height: 20px;
+                margin-left: 5px;
+            }
+        }
+        .edit{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            width: 110px;
+            background-color: yellow;
+            .icon{
+                height: 20px;
+                margin-left: 5px;
+            }
+        }
     }
 }
 

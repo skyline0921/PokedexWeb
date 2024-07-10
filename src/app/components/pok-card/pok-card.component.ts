@@ -16,20 +16,20 @@ export class PokCardComponent implements OnInit {
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd || event instanceof NavigationStart) {
-        this.isPokeboll = router.url === '/generation'
+        this.isPokeball = router.url === '/generation'
       }
     });
   }
 
   @Input() pokemon: IPokemon = {} as IPokemon;
   @Input() index: number = 0;
+  @Input() isGifty = true;
   teamPokemons: { id: number; detail: IPokemon | undefined }[] = [];
-  isPokeboll = false;
-
+  isPokeball = false;
   loading = false;
 
   ngOnInit(): void { 
-    this.isPokeboll = this.router.url === '/generation'
+    this.isPokeball = this.router.url === '/generation'
   }
 
   colors: string = 'typeColors';

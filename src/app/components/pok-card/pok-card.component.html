@@ -1,6 +1,10 @@
 <div *ngIf="!loading" routerLink="/pokemon/{{pokemon.name}}" [ngClass]="pokemonType(pokemon)" class="pokemon">
   
-  <img class="pok" src="https://pokemon-react-635a4.web.app/images/animated/{{index +1}}.gif" alt="">
+  <img *ngIf="isGifty" class="pok" src="https://pokemon-react-635a4.web.app/images/animated/{{index +1}}.gif" alt="">
+  
+  <figure *ngIf="!isGifty" class="pokStatic">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{index +1}}.png" alt="">
+  </figure>
  
   <div class="col">
   <h3>{{$any(pokemon.name)}} #{{convertStringToNumber(index+1)}}</h3>
@@ -10,7 +14,7 @@
     </div>
   </div>
 
-  <div class="gifPokeball" *ngIf="isPokeboll" (click)="addPok($event)">
+  <div class="gifPokeball" *ngIf="isPokeball" (click)="addPok($event)">
     <img class="pokeball" src="/assets/pokebola.gif" alt="">
     <div class="captureLabel">capture</div>
   </div>
