@@ -97,78 +97,43 @@ main{
             }
         }
     }
-    .buttons{
+    .buttons {
         display: flex;
-        .regenerate{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-position: center;
-            padding: 10px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            margin-right: 10px;
-            width: 110px;
-            background-color: rgb(66, 196, 66);
-            .icon{
-                height: 20px;
-                margin-left: 5px;
-            }
+        .icon{
+            height: 20px;
         }
-        .saves{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-position: center;
-            padding: 10px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            margin-right: 10px;
-            width: 110px;
-            background-color: aqua;
-            .icon{
-                height: 20px;
-                margin-left: 5px;
-            }
+        img{
+            position: relative;
+            filter: brightness(1) contrast(1) invert(1);
+            right: 10px;
         }
-        .delete{
+        button{
             display: flex;
             justify-content: center;
             align-items: center;
-            background-position: center;
+            flex-direction: row-reverse;
             padding: 10px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             border: none;
             border-radius: 10px;
             font-size: 0.8rem;
             margin-right: 10px;
-            width: 110px;
-            background-color: rgb(247, 50, 50);
-            .icon{
-                height: 20px;
-                margin-left: 5px;
+            width: 125px;
+            color: white;
+            &.regenerate{
+                background-color: #30a7d7;
             }
-        }
-        .edit{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-position: center;
-            padding: 10px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            margin-right: 10px;
-            width: 110px;
-            background-color: yellow;
-            .icon{
-                height: 20px;
-                margin-left: 5px;
+            &.saves{
+                background-color: #36c919;
+            }
+            &.delete{
+                .iconDel{
+                    height: 25px;
+                }
+                background-color: #dd3434;
+            }
+            &.edit{
+                background-color:#e3cf00;
             }
         }
     }
